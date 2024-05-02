@@ -1,0 +1,143 @@
+# set replica false as feature discovery remains pending
+wait: false
+
+## Node Feature Discovery enabled/disable configuration.
+nfd:
+  enabled: true
+
+## GPU Feature Discovery configuration.
+gfd:
+  enabled: true
+
+## Operator configuration.
+operator:
+  upgradeCRD: true
+  cleanupCRD: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      cpu: 50m
+      memory: 300Mi
+
+## Node Feature Discovery configuration.
+node-feature-discovery:
+  enableNodeFeatureApi: true
+  master:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 200Mi
+  worker:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+      limits:
+        cpu: 50m
+        memory: 300Mi
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node.kubernetes.io/instance-type
+                  operator: In
+                  values:
+                    - g4g.40.kube.small
+                    - g4g.40.kube.medium
+                    - g4g.40.kube.large
+                    - g4g.40.kube.xlarge
+                    - g4g.kube.small
+                    - g4g.kube.medium
+                    - g4g.kube.large
+                    - g4g.kube.xlarge
+                    - an.g1.l40s.kube.x1
+                    - an.g1.l40s.kube.x2
+                    - an.g1.l40s.kube.x4
+                    - an.g1.l40s.kube.x8
+    tolerations:
+      - key: nvidia.com/gpu
+        operator: Exists
+        effect: NoSchedule
+  gc:
+    enable: false
+    interval: 30m
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node.kubernetes.io/instance-type
+                  operator: NotIn
+                  values:
+                    - g4g.40.kube.small
+                    - g4g.40.kube.medium
+                    - g4g.40.kube.large
+                    - g4g.40.kube.xlarge
+                    - g4g.kube.small
+                    - g4g.kube.medium
+                    - g4g.kube.large
+                    - g4g.kube.xlarge
+                    - an.g1.l40s.kube.x1
+                    - an.g1.l40s.kube.x2
+                    - an.g1.l40s.kube.x4
+                    - an.g1.l40s.kube.x8
+    tolerations:
+      - key: nvidia.com/gpu
+        operator: Exists
+        effect: NoSchedule
+  
+## Driver configuration
+driver:
+  enabled: false
+
+## Toolkit configuration.
+toolkit:
+  enabled: false
+
+## Device Plugin configuration.
+devicePlugin:
+  enabled: true
+  version: "v0.14.5"
+  env:
+    - name: FAIL_ON_INIT_ERROR
+      value: 'false'
+    # - name: PASS_DEVICE_SPECS
+    #   value: 'true'
+    # - name: DEVICE_LIST_STRATEGY
+    #   value: volume-mounts
+    # - name: DEVICE_ID_STRATEGY
+    #   value: index
+    # - name: NVIDIA_VISIBLE_DEVICES
+    #   value: all
+    # - name: NVIDIA_DRIVER_CAPABILITIES
+    #   value: all
+
+## DCGM configuration
+dcgm:
+  enabled: true
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+    limits:
+      cpu: 50m
+      memory: 400Mi
+
+## DCGM Exporter configuration.
+dcgmExporter:
+  enabled: true
+  
+## MIG Manager configuration.
+migManager:
+  ## @skip civo-talos-gpu-operator.migManager.enabled
+  enabled: false
+
+validator:
+  enabled: false
