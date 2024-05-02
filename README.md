@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This project provides a boilerplate for deploying a K8s GPU Cluster on Civo Cloud using Terraform. It automates the setup of the [Nvidia GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) on the Civo Talos Linux GPU Clusters
+This project provides a boilerplate for deploying a K8s GPU Cluster on Civo Cloud using Terraform. It automates the setup of the [Nvidia GPU Operator](https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/index.html) on the Civo Talos Linux GPU Clusters.
 
 ## Prerequisites
 
