@@ -46,6 +46,7 @@ resource "kubernetes_daemonset" "fake_toolkit_ready" {
               touch /run/nvidia/validations/host-driver-ready;
               touch /run/nvidia/validations/toolkit-ready;
               touch /run/nvidia/validations/.driver-ctr-ready;
+              touch /run/nvidia/validations/driver-ready
               sleep infinity
               EOF
           ]
