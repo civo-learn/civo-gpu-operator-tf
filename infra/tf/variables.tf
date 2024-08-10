@@ -9,12 +9,13 @@ variable "cluster_name" {
     description = "The name of the cluster to create"
 }
 
+
 # the GPU node instance to use for the cluster
 variable "cluster_node_size" {
     type    = string
     # default = "g4g.40.kube.small"  # A100 40gb
     # default = "g4g.kube.small" # A100 80gb
-    default = "an.g1.l40s.kube.x1"  # L40s 46gb
+    default = "an.g1.h100.kube.x1"  # L40s 46gb
     description = "The size of the GPU node required for the cluster"
 }
 
@@ -60,5 +61,11 @@ variable "deploy_gpu_operator_talos_patch" {
 variable "deploy_gpu_operator_test" {
   description = "Deploy the Ollama Web UI."
   type        = bool
-  default     = true
+  default     = false
+}
+
+variable "deploy_gpu_observability" {
+  description = "Deploy the Ollama Web UI."
+  type        = bool
+  default     = false
 }

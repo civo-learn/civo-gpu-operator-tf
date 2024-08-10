@@ -3,6 +3,7 @@
 
 # Helm release configuration for the Nvidia GPU operator
 resource "helm_release" "monitoring_stack" {
+  count = var.deploy_gpu_observability ? 1 : 0
   name       = "monitoring-stack"
   repository = "https://prometheus-community.github.io/helm-charts"
   chart      = "kube-prometheus-stack"

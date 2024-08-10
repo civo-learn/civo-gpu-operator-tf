@@ -15,7 +15,7 @@ resource "helm_release" "gpu_operator" {
   repository = "https://helm.ngc.nvidia.com/nvidia"
   chart      = "gpu-operator"
   namespace  = "gpu-operator" # Directly use the string here
-  version    = "v23.9.2"
+  version    = "v24.6.0"
 
   # load the values for the nvidia gpu operator
   values = [

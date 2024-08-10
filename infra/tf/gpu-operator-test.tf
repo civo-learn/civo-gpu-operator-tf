@@ -1,4 +1,5 @@
 resource "kubernetes_pod" "gpu_operator_test" {
+  count = var.deploy_gpu_operator_test ? 1 : 0
   metadata {
     name = "gpu-operator-test"
   }

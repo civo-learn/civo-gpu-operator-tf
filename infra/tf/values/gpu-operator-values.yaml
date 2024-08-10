@@ -1,5 +1,5 @@
 # set replica false as feature discovery remains pending
-wait: false
+wait: true
 
 ## Node Feature Discovery enabled/disable configuration.
 nfd:
@@ -57,6 +57,11 @@ node-feature-discovery:
                     - an.g1.l40s.kube.x2
                     - an.g1.l40s.kube.x4
                     - an.g1.l40s.kube.x8
+                    - an.g1.h100.kube.x1
+                    - an.g1.h100.kube.x2
+                    - an.g1.h100.kube.x4
+                    - an.g1.h100.kube.x8
+
     tolerations:
       - key: nvidia.com/gpu
         operator: Exists
@@ -88,6 +93,10 @@ node-feature-discovery:
                     - an.g1.l40s.kube.x2
                     - an.g1.l40s.kube.x4
                     - an.g1.l40s.kube.x8
+                    - an.g1.h100.kube.x1
+                    - an.g1.h100.kube.x2
+                    - an.g1.h100.kube.x4
+                    - an.g1.h100.kube.x8
     tolerations:
       - key: nvidia.com/gpu
         operator: Exists
@@ -121,7 +130,8 @@ devicePlugin:
 
 ## DCGM configuration
 dcgm:
-  enabled: true
+  # enable with monitoring
+  enabled: false
   resources:
     requests:
       cpu: 10m
@@ -132,7 +142,8 @@ dcgm:
 
 ## DCGM Exporter configuration.
 dcgmExporter:
-  enabled: true
+  # enable with monitoring
+  enabled: false
   
 ## MIG Manager configuration.
 migManager:
