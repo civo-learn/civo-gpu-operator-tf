@@ -87,6 +87,7 @@ resource "kubernetes_daemonset" "fake_toolkit_ready" {
                     "an.g1.h100.kube.x2",
                     "an.g1.h100.kube.x4",
                     "an.g1.h100.kube.x8",
+                    "an.g1.a100sxm.kube.x1",
                     "an.g1.h200sxm.kube.x1",
                     "an.g1.h200sxm.kube.x8"
                   ]
