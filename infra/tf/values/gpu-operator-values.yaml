@@ -61,6 +61,7 @@ node-feature-discovery:
                     - an.g1.h100.kube.x2
                     - an.g1.h100.kube.x4
                     - an.g1.h100.kube.x8
+                    - an.g1.a100sxm.kube.x1
                     - an.g1.h200sxm.kube.x1
                     - an.g1.h200sxm.kube.x8
     tolerations:
@@ -98,13 +99,14 @@ node-feature-discovery:
                     - an.g1.h100.kube.x2
                     - an.g1.h100.kube.x4
                     - an.g1.h100.kube.x8
+                    - an.g1.a100sxm.kube.x1
                     - an.g1.h200sxm.kube.x1
                     - an.g1.h200sxm.kube.x8
     tolerations:
       - key: nvidia.com/gpu
         operator: Exists
         effect: NoSchedule
-  
+
 ## Driver configuration
 driver:
   enabled: false
@@ -147,7 +149,7 @@ dcgm:
 dcgmExporter:
   # enable with monitoring
   enabled: false
-  
+
 ## MIG Manager configuration.
 migManager:
   ## @skip civo-talos-gpu-operator.migManager.enabled
